@@ -28,6 +28,7 @@ dependencies {
     compileOnly name: 'ImanitySpigot-API-2022.08.1b2'
     compileOnly name: 'CarbonSpigot-v3.2.2'
     compileOnly name: 'FoxSpigot'
+    compileOnly name: 'Eden-1.0.24-BETA-a84578b-all'
 
     //Libraries from others
     compileOnly 'org.imanity.imanityspigot:api:2022.08.1b2' //ImanitySpigot API
