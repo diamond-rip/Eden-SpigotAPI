@@ -2,6 +2,7 @@ package rip.diamond.spigotapi;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import rip.diamond.spigotapi.knockback.AbstractKnockback;
 import rip.diamond.spigotapi.knockback.impl.CarbonSpigotKnockback;
 import rip.diamond.spigotapi.knockback.impl.DefaultKnockback;
@@ -18,15 +19,15 @@ import java.util.Arrays;
 @AllArgsConstructor
 public enum SpigotType {
 
-    SPIGOT("org.spigotmc.SpigotConfig", new DefaultKnockback(), new DefaultMovementHandler()),
-    IMANITY_SPIGOT_3("org.imanity.imanityspigot.ImanitySpigot", new ImanitySpigot3Knockback(), new ImanitySpigot3MovementHandler()),
-    CARBON_SPIGOT("xyz.refinedev.spigot.config.CarbonConfig", new CarbonSpigotKnockback(), new CarbonSpigotMovementHandler()),
-    FOX_SPIGOT("pt.foxspigot.jar.FoxSpigot", new FoxSpigotKnockback(), new FoxSpigotMovementHandler()),
+    SPIGOT("org.spigotmc.SpigotConfig", DefaultKnockback.class, DefaultMovementHandler.class),
+    IMANITY_SPIGOT_3("org.imanity.imanityspigot.ImanitySpigot", ImanitySpigot3Knockback.class, ImanitySpigot3MovementHandler.class),
+    CARBON_SPIGOT("xyz.refinedev.spigot.config.CarbonConfig", CarbonSpigotKnockback.class, CarbonSpigotMovementHandler.class),
+    FOX_SPIGOT("pt.foxspigot.jar.FoxSpigot", FoxSpigotKnockback.class, FoxSpigotMovementHandler.class),
     ;
 
     private final String package_;
-    @Getter private final AbstractKnockback knockback;
-    @Getter private final AbstractMovementHandler movementHandler;
+    private final Class<?> knockback;
+    private final Class<?> movementHandler;
 
     public String getPackage() {
         return package_;
@@ -42,6 +43,16 @@ public enum SpigotType {
                 .filter(type -> !type.equals(SpigotType.SPIGOT) && check(type.getPackage()))
                 .findFirst()
                 .orElse(SpigotType.SPIGOT);
+    }
+
+    @SneakyThrows
+    public static AbstractKnockback getKnockback() {
+        return (AbstractKnockback) get().knockback.newInstance();
+    }
+
+    @SneakyThrows
+    public static AbstractMovementHandler getMovementHandler() {
+        return (AbstractMovementHandler) get().movementHandler.newInstance();
     }
 
     public static boolean check(String string) {

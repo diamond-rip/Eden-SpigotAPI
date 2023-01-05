@@ -20,8 +20,8 @@ public final class SpigotAPI {
         PLUGIN = plugin;
 
         spigotType = SpigotType.get();
-        knockback = spigotType.getKnockback();
-        movementHandler = spigotType.getMovementHandler();
+        knockback = SpigotType.getKnockback();
+        movementHandler = SpigotType.getMovementHandler();
 
         return this;
     }
