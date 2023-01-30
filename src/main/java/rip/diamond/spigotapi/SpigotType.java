@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import rip.diamond.spigotapi.knockback.AbstractKnockback;
-import rip.diamond.spigotapi.knockback.impl.CarbonSpigotKnockback;
-import rip.diamond.spigotapi.knockback.impl.DefaultKnockback;
-import rip.diamond.spigotapi.knockback.impl.FoxSpigotKnockback;
-import rip.diamond.spigotapi.knockback.impl.ImanitySpigot3Knockback;
+import rip.diamond.spigotapi.knockback.impl.*;
 import rip.diamond.spigotapi.movementhandler.AbstractMovementHandler;
 import rip.diamond.spigotapi.movementhandler.impl.CarbonSpigotMovementHandler;
 import rip.diamond.spigotapi.movementhandler.impl.DefaultMovementHandler;
@@ -23,6 +20,7 @@ public enum SpigotType {
     IMANITY_SPIGOT_3("org.imanity.imanityspigot.ImanitySpigot", ImanitySpigot3Knockback.class, ImanitySpigot3MovementHandler.class),
     CARBON_SPIGOT("xyz.refinedev.spigot.config.CarbonConfig", CarbonSpigotKnockback.class, CarbonSpigotMovementHandler.class),
     FOX_SPIGOT("pt.foxspigot.jar.FoxSpigot", FoxSpigotKnockback.class, FoxSpigotMovementHandler.class),
+    WIND_SPIGOT("ga.windpvp.windspigot.WindSpigot", WindSpigotKnockback.class, DefaultMovementHandler.class), //Although WindSpigot has MovementHandler (In WindSpigot it is called MovementListener), it is not implement in the latest version of release, so we have to use default
     ;
 
     private final String package_;
