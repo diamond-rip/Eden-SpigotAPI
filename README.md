@@ -5,5 +5,6 @@ An API for Eden which allows Eden to control specific spigot fork stuff. Such as
 - ImanitySpigot 3
 - CarbonSpigot
 - FoxSpigot
+- WindSpigot
 
 Inspired from [SpigotAPI](https://github.com/RefineDevelopment/SpigotAPI) by DevDrizzy
