@@ -9,11 +9,16 @@ import rip.diamond.spigotapi.SpigotAPI;
 import rip.diamond.spigotapi.movementhandler.AbstractMovementHandler;
 import rip.diamond.spigotapi.util.TriConsumer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ImanitySpigot3MovementHandler extends AbstractMovementHandler {
+
+    private final List<MovementHandler> movementHandlers = new ArrayList<>();
 
     @Override
     public void injectLocationUpdate(TriConsumer<Player, Location, Location> data) {
-        Bukkit.imanity().getMovementService().registerMovementHandler(SpigotAPI.PLUGIN, new MovementHandler() {
+        MovementHandler movementHandler = new MovementHandler() {
             @Override
             public void onUpdateLocation(Player player, Location location, Location location1, MovementPacketWrapper movementPacketWrapper) {
                 data.accept(player, location, location1);
@@ -23,12 +28,14 @@ public class ImanitySpigot3MovementHandler extends AbstractMovementHandler {
             public void onUpdateRotation(Player player, Location location, Location location1, MovementPacketWrapper movementPacketWrapper) {
 
             }
-        });
+        };
+        Bukkit.imanity().getMovementService().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
+        movementHandlers.add(movementHandler);
     }
 
     @Override
     public void injectRotationUpdate(TriConsumer<Player, Location, Location> data) {
-        Bukkit.imanity().getMovementService().registerMovementHandler(SpigotAPI.PLUGIN, new MovementHandler() {
+        MovementHandler movementHandler = new MovementHandler() {
             @Override
             public void onUpdateLocation(Player player, Location location, Location location1, MovementPacketWrapper movementPacketWrapper) {
 
@@ -38,6 +45,13 @@ public class ImanitySpigot3MovementHandler extends AbstractMovementHandler {
             public void onUpdateRotation(Player player, Location location, Location location1, MovementPacketWrapper movementPacketWrapper) {
                 data.accept(player, location, location1);
             }
-        });
+        };
+        Bukkit.imanity().getMovementService().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
+        movementHandlers.add(movementHandler);
+    }
+
+    @Override
+    public void uninject() {
+        movementHandlers.forEach(movementHandler -> Bukkit.imanity().unregisterMovementHandler(movementHandler));
     }
 }

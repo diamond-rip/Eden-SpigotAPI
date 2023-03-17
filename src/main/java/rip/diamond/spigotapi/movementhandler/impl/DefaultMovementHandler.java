@@ -4,16 +4,23 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import rip.diamond.spigotapi.SpigotAPI;
 import rip.diamond.spigotapi.movementhandler.AbstractMovementHandler;
 import rip.diamond.spigotapi.util.TriConsumer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DefaultMovementHandler extends AbstractMovementHandler {
+
+    private final List<Listener> listeners = new ArrayList<>();
+
     @Override
     public void injectLocationUpdate(TriConsumer<Player, Location, Location> data) {
-        Bukkit.getPluginManager().registerEvents(new Listener() {
+        Listener listener = new Listener() {
             @EventHandler
             public void onMove(PlayerMoveEvent event) {
                 Player player = event.getPlayer();
@@ -30,12 +37,14 @@ public class DefaultMovementHandler extends AbstractMovementHandler {
                     data.accept(player, event.getFrom(), event.getTo());
                 }
             }
-        }, SpigotAPI.PLUGIN);
+        };
+        Bukkit.getPluginManager().registerEvents(listener, SpigotAPI.PLUGIN);
+        listeners.add(listener);
     }
 
     @Override
     public void injectRotationUpdate(TriConsumer<Player, Location, Location> data) {
-        Bukkit.getPluginManager().registerEvents(new Listener() {
+        Listener listener = new Listener() {
             @EventHandler
             public void onMove(PlayerMoveEvent event) {
                 Player player = event.getPlayer();
@@ -50,6 +59,13 @@ public class DefaultMovementHandler extends AbstractMovementHandler {
                     data.accept(player, event.getFrom(), event.getTo());
                 }
             }
-        }, SpigotAPI.PLUGIN);
+        };
+        Bukkit.getPluginManager().registerEvents(listener, SpigotAPI.PLUGIN);
+        listeners.add(listener);
+    }
+
+    @Override
+    public void uninject() {
+        listeners.forEach(HandlerList::unregisterAll);
     }
 }

@@ -9,10 +9,16 @@ import rip.diamond.spigotapi.util.TriConsumer;
 import xyz.refinedev.spigot.api.handlers.PacketAPI;
 import xyz.refinedev.spigot.api.handlers.impl.MovementHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarbonSpigotMovementHandler extends AbstractMovementHandler {
+
+    private final List<MovementHandler> movementHandlers = new ArrayList<>();
+
     @Override
     public void injectLocationUpdate(TriConsumer<Player, Location, Location> data) {
-        PacketAPI.getInstance().registerMovementHandler(SpigotAPI.PLUGIN, new MovementHandler() {
+        MovementHandler movementHandler = new MovementHandler() {
             @Override
             public void handleUpdateLocation(Player player, Location location, Location location1, PacketPlayInFlying packetPlayInFlying) {
                 data.accept(player, location, location1);
@@ -22,12 +28,14 @@ public class CarbonSpigotMovementHandler extends AbstractMovementHandler {
             public void handleUpdateRotation(Player player, Location location, Location location1, PacketPlayInFlying packetPlayInFlying) {
 
             }
-        });
+        };
+        PacketAPI.getInstance().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
+        movementHandlers.add(movementHandler);
     }
 
     @Override
     public void injectRotationUpdate(TriConsumer<Player, Location, Location> data) {
-        PacketAPI.getInstance().registerMovementHandler(SpigotAPI.PLUGIN, new MovementHandler() {
+        MovementHandler movementHandler = new MovementHandler() {
             @Override
             public void handleUpdateLocation(Player player, Location location, Location location1, PacketPlayInFlying packetPlayInFlying) {
 
@@ -37,6 +45,14 @@ public class CarbonSpigotMovementHandler extends AbstractMovementHandler {
             public void handleUpdateRotation(Player player, Location location, Location location1, PacketPlayInFlying packetPlayInFlying) {
                 data.accept(player, location, location1);
             }
-        });
+        };
+        PacketAPI.getInstance().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
+        movementHandlers.add(movementHandler);
+    }
+
+    @Override
+    public void uninject() {
+        // TODO: 16/3/2023 Need to implement
+        //movementHandlers.forEach(movementHandler -> );
     }
 }

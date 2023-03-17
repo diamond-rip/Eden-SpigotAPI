@@ -10,4 +10,6 @@ public abstract class AbstractMovementHandler {
 
     public abstract void injectRotationUpdate(TriConsumer<Player, Location, Location> data);
 
+    public abstract void uninject();
+
 }
