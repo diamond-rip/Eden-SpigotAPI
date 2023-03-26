@@ -49,10 +49,4 @@ public class CarbonSpigotMovementHandler extends AbstractMovementHandler {
         PacketAPI.getInstance().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
         movementHandlers.add(movementHandler);
     }
-
-    @Override
-    public void uninject() {
-        // TODO: 16/3/2023 Need to implement
-        //movementHandlers.forEach(movementHandler -> );
-    }
 }

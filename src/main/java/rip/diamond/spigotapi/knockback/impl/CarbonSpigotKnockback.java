@@ -1,7 +1,6 @@
 package rip.diamond.spigotapi.knockback.impl;
 
 import org.bukkit.entity.Player;
-import pt.foxspigot.jar.knockback.KnockbackModule;
 import rip.diamond.practice.Language;
 import rip.diamond.spigotapi.knockback.AbstractKnockback;
 import xyz.refinedev.spigot.api.knockback.KnockbackAPI;

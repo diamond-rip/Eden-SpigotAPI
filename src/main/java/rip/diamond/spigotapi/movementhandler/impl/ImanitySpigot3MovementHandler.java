@@ -49,9 +49,4 @@ public class ImanitySpigot3MovementHandler extends AbstractMovementHandler {
         Bukkit.imanity().getMovementService().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
         movementHandlers.add(movementHandler);
     }
-
-    @Override
-    public void uninject() {
-        movementHandlers.forEach(movementHandler -> Bukkit.imanity().unregisterMovementHandler(movementHandler));
-    }
 }

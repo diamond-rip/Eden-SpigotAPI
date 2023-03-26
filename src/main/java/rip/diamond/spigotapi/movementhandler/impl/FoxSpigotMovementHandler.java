@@ -48,9 +48,4 @@ public class FoxSpigotMovementHandler extends AbstractMovementHandler {
         FoxSpigot.INSTANCE.addMovementHandler(movementHandler);
         movementHandlers.add(movementHandler);
     }
-
-    @Override
-    public void uninject() {
-        movementHandlers.forEach(movementHandler -> FoxSpigot.INSTANCE.getMovementHandlers().remove(movementHandler));
-    }
 }

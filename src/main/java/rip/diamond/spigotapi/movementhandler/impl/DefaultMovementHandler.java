@@ -63,9 +63,4 @@ public class DefaultMovementHandler extends AbstractMovementHandler {
         Bukkit.getPluginManager().registerEvents(listener, SpigotAPI.PLUGIN);
         listeners.add(listener);
     }
-
-    @Override
-    public void uninject() {
-        listeners.forEach(HandlerList::unregisterAll);
-    }
 }

@@ -26,7 +26,7 @@ dependencies {
     //Libraries from local
     compileOnly name: 'ImanitySpigot-KnockbackAPI' //ImanitySpigot API
     compileOnly name: 'ImanitySpigot-API-2022.08.1b2'
-    compileOnly name: 'CarbonSpigot-v3.2.2'
+    compileOnly name: 'CarbonSpigot-v3.5'
     compileOnly name: 'FoxSpigot'
     compileOnly name: 'WindSpigot-2.1.2'
     compileOnly name: 'Eden-1.0.24-BETA-a84578b-all'

@@ -14,7 +14,7 @@ public final class SpigotAPI {
 
     @Setter private SpigotType spigotType;
     private AbstractKnockback knockback;
-    private AbstractMovementHandler movementHandler;
+    @Setter private AbstractMovementHandler movementHandler;
 
     public SpigotAPI init(JavaPlugin plugin) {
         INSTANCE = this;
