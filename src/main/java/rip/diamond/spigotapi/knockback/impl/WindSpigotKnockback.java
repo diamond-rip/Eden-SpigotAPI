@@ -3,7 +3,7 @@ package rip.diamond.spigotapi.knockback.impl;
 import dev.cobblesword.nachospigot.knockback.KnockbackConfig;
 import dev.cobblesword.nachospigot.knockback.KnockbackProfile;
 import org.bukkit.entity.Player;
-import rip.diamond.practice.Language;
+import rip.diamond.practice.config.Language;
 import rip.diamond.spigotapi.knockback.AbstractKnockback;
 import rip.diamond.spigotapi.util.Reflection;
 
