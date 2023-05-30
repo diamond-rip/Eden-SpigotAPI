@@ -1,16 +1,14 @@
 package rip.diamond.spigotapi.movementhandler.impl;
 
+import com.ld.spigot.LightSpigot;
+import com.ld.spigot.handler.MovementHandler;
 import net.minecraft.server.v1_8_R3.PacketPlayInFlying;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import rip.diamond.spigotapi.SpigotAPI;
 import rip.diamond.spigotapi.movementhandler.AbstractMovementHandler;
 import rip.diamond.spigotapi.util.TriConsumer;
-import xyz.refinedev.spigot.api.handlers.PacketAPI;
-import xyz.refinedev.spigot.api.handlers.impl.MovementHandler;
 
-public class CarbonSpigotMovementHandler extends AbstractMovementHandler {
-
+public class LightSpigotMovementHandler extends AbstractMovementHandler {
     @Override
     public void injectLocationUpdate(TriConsumer<Player, Location, Location> data) {
         MovementHandler movementHandler = new MovementHandler() {
@@ -24,7 +22,7 @@ public class CarbonSpigotMovementHandler extends AbstractMovementHandler {
 
             }
         };
-        PacketAPI.getInstance().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
+        LightSpigot.INSTANCE.addMovementHandler(movementHandler);
     }
 
     @Override
@@ -40,6 +38,6 @@ public class CarbonSpigotMovementHandler extends AbstractMovementHandler {
                 data.accept(player, location, location1);
             }
         };
-        PacketAPI.getInstance().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
+        LightSpigot.INSTANCE.addMovementHandler(movementHandler);
     }
 }

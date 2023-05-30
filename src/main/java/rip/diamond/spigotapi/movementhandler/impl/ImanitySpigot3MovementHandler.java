@@ -9,12 +9,7 @@ import rip.diamond.spigotapi.SpigotAPI;
 import rip.diamond.spigotapi.movementhandler.AbstractMovementHandler;
 import rip.diamond.spigotapi.util.TriConsumer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ImanitySpigot3MovementHandler extends AbstractMovementHandler {
-
-    private final List<MovementHandler> movementHandlers = new ArrayList<>();
 
     @Override
     public void injectLocationUpdate(TriConsumer<Player, Location, Location> data) {
@@ -30,7 +25,6 @@ public class ImanitySpigot3MovementHandler extends AbstractMovementHandler {
             }
         };
         Bukkit.imanity().getMovementService().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
-        movementHandlers.add(movementHandler);
     }
 
     @Override
@@ -47,6 +41,5 @@ public class ImanitySpigot3MovementHandler extends AbstractMovementHandler {
             }
         };
         Bukkit.imanity().getMovementService().registerMovementHandler(SpigotAPI.PLUGIN, movementHandler);
-        movementHandlers.add(movementHandler);
     }
 }

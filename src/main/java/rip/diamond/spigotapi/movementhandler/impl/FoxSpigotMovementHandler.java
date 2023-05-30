@@ -8,12 +8,7 @@ import pt.foxspigot.jar.handler.MovementHandler;
 import rip.diamond.spigotapi.movementhandler.AbstractMovementHandler;
 import rip.diamond.spigotapi.util.TriConsumer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FoxSpigotMovementHandler extends AbstractMovementHandler {
-
-    private final List<MovementHandler> movementHandlers = new ArrayList<>();
 
     @Override
     public void injectLocationUpdate(TriConsumer<Player, Location, Location> data) {
@@ -29,7 +24,6 @@ public class FoxSpigotMovementHandler extends AbstractMovementHandler {
             }
         };
         FoxSpigot.INSTANCE.addMovementHandler(movementHandler);
-        movementHandlers.add(movementHandler);
     }
 
     @Override
@@ -46,6 +40,5 @@ public class FoxSpigotMovementHandler extends AbstractMovementHandler {
             }
         };
         FoxSpigot.INSTANCE.addMovementHandler(movementHandler);
-        movementHandlers.add(movementHandler);
     }
 }

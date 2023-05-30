@@ -6,10 +6,7 @@ import lombok.SneakyThrows;
 import rip.diamond.spigotapi.knockback.AbstractKnockback;
 import rip.diamond.spigotapi.knockback.impl.*;
 import rip.diamond.spigotapi.movementhandler.AbstractMovementHandler;
-import rip.diamond.spigotapi.movementhandler.impl.CarbonSpigotMovementHandler;
-import rip.diamond.spigotapi.movementhandler.impl.DefaultMovementHandler;
-import rip.diamond.spigotapi.movementhandler.impl.FoxSpigotMovementHandler;
-import rip.diamond.spigotapi.movementhandler.impl.ImanitySpigot3MovementHandler;
+import rip.diamond.spigotapi.movementhandler.impl.*;
 
 import java.util.Arrays;
 
@@ -21,6 +18,8 @@ public enum SpigotType {
     CARBON_SPIGOT("xyz.refinedev.spigot.config.SettingsConfig", CarbonSpigotKnockback.class, CarbonSpigotMovementHandler.class),
     FOX_SPIGOT("pt.foxspigot.jar.FoxSpigot", FoxSpigotKnockback.class, FoxSpigotMovementHandler.class),
     WIND_SPIGOT("ga.windpvp.windspigot.WindSpigot", WindSpigotKnockback.class, DefaultMovementHandler.class), //Although WindSpigot has MovementHandler (In WindSpigot it is called MovementListener), it is not implement in the latest version of release, so we have to use default
+    ROCKET_SPIGOT("eu.vortexdev.api.SpigotAPI", RocketSpigotKnockback.class, RocketSpigotMovementHandler.class),
+    LIGHT_SPIGOT("com.ld.spigot.LightSpigot", LightSpigotKnockback.class, LightSpigotMovementHandler.class),
     ;
 
     private final String package_;

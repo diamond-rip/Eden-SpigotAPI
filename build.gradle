@@ -29,6 +29,8 @@ dependencies {
     compileOnly name: 'CarbonSpigot-v3.5'
     compileOnly name: 'FoxSpigot'
     compileOnly name: 'WindSpigot-2.1.2'
+    compileOnly name: 'RocketSpigot-SpigotAPI'
+    compileOnly name: 'LightSpigotLite'
     compileOnly name: 'Eden-1.1.10-BETA-805a40d-all'
 
     //Libraries from others
