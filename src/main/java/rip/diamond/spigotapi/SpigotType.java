@@ -20,6 +20,7 @@ public enum SpigotType {
     WIND_SPIGOT("ga.windpvp.windspigot.WindSpigot", WindSpigotKnockback.class, DefaultMovementHandler.class), //Although WindSpigot has MovementHandler (In WindSpigot it is called MovementListener), it is not implement in the latest version of release, so we have to use default
     ROCKET_SPIGOT("eu.vortexdev.api.SpigotAPI", RocketSpigotKnockback.class, RocketSpigotMovementHandler.class),
     LIGHT_SPIGOT("com.ld.spigot.LightSpigot", LightSpigotKnockback.class, LightSpigotMovementHandler.class),
+    RAVE_SPIGOT("me.drizzy.ravespigot.RaveSpigot", RaveSpigotKnockback.class, RaveSpigotMovementHandler.class)
     ;
 
     private final String package_;
