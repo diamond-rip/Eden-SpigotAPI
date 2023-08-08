@@ -15,7 +15,7 @@ public enum SpigotType {
 
     SPIGOT("org.spigotmc.SpigotConfig", DefaultKnockback.class, DefaultMovementHandler.class),
     IMANITY_SPIGOT_3("org.imanity.imanityspigot.ImanitySpigot", ImanitySpigot3Knockback.class, ImanitySpigot3MovementHandler.class),
-    CARBON_SPIGOT("xyz.refinedev.spigot.config.SettingsConfig", CarbonSpigotKnockback.class, CarbonSpigotMovementHandler.class),
+    CARBON_SPIGOT("xyz.refinedev.spigot.knockback.KnockbackProfile", CarbonSpigotKnockback.class, CarbonSpigotMovementHandler.class),
     FOX_SPIGOT("pt.foxspigot.jar.FoxSpigot", FoxSpigotKnockback.class, FoxSpigotMovementHandler.class),
     WIND_SPIGOT("ga.windpvp.windspigot.WindSpigot", WindSpigotKnockback.class, DefaultMovementHandler.class), //Although WindSpigot has MovementHandler (In WindSpigot it is called MovementListener), it is not implement in the latest version of release, so we have to use default
     ROCKET_SPIGOT("eu.vortexdev.api.SpigotAPI", RocketSpigotKnockback.class, RocketSpigotMovementHandler.class),
